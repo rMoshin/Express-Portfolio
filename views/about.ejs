@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <%- include('partials/header') %>
+
+    <!-- Main Content Section -->
+    <main>
+      <!-- About Me Section -->
+      <section class="about">
+        <h1>About Me</h1>
+        <div class="profile">
+          <img src="/images/portfolio.png" alt="Profile Picture" />
+          <h2>Rayyan Mohsin</h2>
+        </div>
+        <p>
+          I like program solving, one line at a time. I mainly program in .NET , Python , JS and Java although everyday I try to learn new technologies.
+        </p>
+        <p>
+          You can download a PDF version of my resume
+          <a href="/files/resume.pdf" target="_blank">here</a>.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+  </body>
+</html>

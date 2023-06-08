@@ -1,0 +1,253 @@
+/*
+File: styles.css
+Student's Name: Rayyan Mohsin
+StudentID: 301270163
+Date: June 4, 2023
+*/
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+h1 {
+  color: #333;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .logo-container {
+    display: inline-block;
+  }
+  
+  .logo {
+    width: 50px; /* Adjust the size of the logo as needed */
+    height: 50px;
+    vertical-align: middle;
+  }
+  
+  .pages {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .pages a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px; /* Adjust the spacing between navigation links */
+  }
+  
+/*Footer CSS*/
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+  /*style the welcome message, button, and mission statement*/
+  main {
+    margin: 20px;
+  }
+  
+  .welcome {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .welcome h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .welcome p {
+    font-size: 16px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .mission {
+    text-align: center;
+  }
+  
+  .mission h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .mission p {
+    font-size: 16px;
+  }
+  
+  /*CSS rules to style the About Me page*/
+  
+  .about {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .profile h2 {
+    margin: 0;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /*CSS rules to style the Projects page*/
+
+  .projects {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .project {
+    margin-bottom: 40px;
+  }
+  
+  .project img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .project h2 {
+    margin: 0;
+  }
+  
+  .project p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /*CSS for services page*/
+  .services {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .service {
+    margin-bottom: 40px;
+  }
+  
+  .service img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .service h3 {
+    margin: 0;
+  }
+  
+  .service p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /*CSS for contact us Page*/
+  .contact {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-info {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .contact-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .contact-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+  }
+  
+  /*Another CSS code for Contact us Page*/
+  .contact-form {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

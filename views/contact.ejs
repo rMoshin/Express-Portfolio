@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <!-- Contact Information Section -->
+      <section class="contact">
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>
+            <strong>Name:</strong> Rayyan Mohsin<br />
+            <strong>Email:</strong> rmohsin@my.centennialcollege.ca<br />
+            <strong>Phone:</strong> +1 123 456 7890<br />
+            <strong>Address:</strong> 123 Main Street, City, Country
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <main>
+      <!-- Contact Form Section -->
+      <section class="contact">
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form action="/" method="POST">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required />
+            </div>
+            <div class="form-group">
+              <label for="contactNumber">Contact Number</label>
+              <input
+                type="tel"
+                id="contactNumber"
+                name="contactNumber"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="button">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

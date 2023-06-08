@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <!-- Include the header partial -->
+    <%- include('partials/header') %>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Services Section -->
+      <section class="services">
+        <h2>Our Services</h2>
+        <!-- Service 1 -->
+        <div class="service">
+          <img src="/images/service1.jpeg" alt="General Programming" />
+          <h3>General Programming</h3>
+          <p>
+            We offer general programming services to help you develop custom
+            software solutions tailored to your needs.
+          </p>
+        </div>
+        <!-- Service 2 -->
+        <div class="service">
+          <img src="/images/service2.jpg" alt="Web Development" />
+          <h3>Web Development</h3>
+          <p>
+            Our web development services cover frontend and backend development,
+            creating responsive and user-friendly websites.
+          </p>
+        </div>
+        <!-- Service 3 -->
+        <div class="service">
+          <img src="/images/service3.jpg" alt="Mobile Apps" />
+          <h3>Mobile Apps</h3>
+          <p>
+            We specialize in mobile app development for iOS and Android
+            platforms, delivering intuitive and feature-rich applications.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Include the footer partial -->
+    <%- include('partials/footer') %>
+  </body>
+</html>
