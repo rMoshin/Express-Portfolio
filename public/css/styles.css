@@ -251,3 +251,40 @@ footer {
     background-color: #0056b3;
   }
   
+  /*CSS code for login page */ 
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .login h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .login label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .login input[type="text"],
+  .login input[type="password"] {
+    width: 250px;
+    padding: 0.5rem;
+  }
+  
+  .login button {
+    padding: 0.5rem 1rem;
+  }
+  

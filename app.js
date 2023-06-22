@@ -7,6 +7,7 @@ Date: June 4, 2023
 
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 const indexRouter = require('./routes/index');
 const app = express();
 
@@ -16,6 +17,13 @@ app.set('view engine', 'ejs');
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
+app.use(
+  session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+  })
+);
 
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
