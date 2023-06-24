@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const sessionMiddleware = session({
-  secret: 'your-secret-key',
+  secret: 'bKm8qmIl93GIBEhd1BM9QakEOxPN71sOMNvSoLIf//Y=',
   resave: false,
   saveUninitialized: true
 });
