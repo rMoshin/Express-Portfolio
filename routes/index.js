@@ -1,13 +1,13 @@
 /*
-File: index.js
+File: styles.css
 Student's Name: Rayyan Mohsin
 StudentID: 301270163
-Date: June 4, 2023
+Date: June 24, 2023
 */
 
 const express = require('express');
 const router = express.Router();
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 const url = 'mongodb://0.0.0.0:27017';
 const dbName = 'portfolio';
@@ -15,32 +15,38 @@ const collectionName = 'users';
 
 // Home Page route
 router.get('/', (req, res) => {
-  res.render('home', { title: 'Home Page' });
+  const user = req.session.user;
+  res.render('home', { title: 'Home Page', user });
 });
 
 // Contact Me Page route
 router.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Contact Me' });
+  const user = req.session.user;
+  res.render('contact', { title: 'Contact Me', user });
 });
 
 // About Page route
 router.get('/about', (req, res) => {
-  res.render('about', { title: 'About' });
+  const user = req.session.user;
+  res.render('about', { title: 'About', user });
 });
 
 // Projects Page route
 router.get('/projects', (req, res) => {
-  res.render('projects', { title: 'Projects' });
+  const user = req.session.user;
+  res.render('projects', { title: 'Projects', user });
 });
 
 // Services Page route
 router.get('/services', (req, res) => {
-  res.render('services', { title: 'Services' });
+  const user = req.session.user;
+  res.render('services', { title: 'Services', user });
 });
 
 // Login Page route
 router.get('/login', (req, res) => {
-  res.render('login', { title: 'Login' });
+  const user = req.session.user;
+  res.render('login', { title: 'Login', user });
 });
 
 // Authentication route
@@ -97,13 +103,118 @@ router.get('/business-contacts', async (req, res) => {
       // Find all contacts
       const contacts = await collection.find().toArray();
 
-      res.render('business-contacts', { title: 'Business Contacts', contacts });
+      res.render('business-contacts', { title: 'Business Contacts', contacts, user });
 
       // Close the client connection
       client.close();
     } catch (err) {
       console.error('Error retrieving contacts:', err);
       res.redirect('/');
+    }
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Update Contact Page route
+router.get('/update/:id', async (req, res) => {
+  const user = req.session.user;
+  if (user) {
+    try {
+      const id = req.params.id;
+      // Create a new MongoClient
+      const client = new MongoClient(url, { useUnifiedTopology: true });
+
+      // Connect to the MongoDB server
+      await client.connect();
+
+      console.log('Connected to the database');
+
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
+
+      // Find the contact with the provided id
+      const contact = await collection.findOne({ _id: new ObjectId(id) });
+
+      res.render('update', { title: 'Update Contact', contact, user });
+
+      // Close the client connection
+      client.close();
+    } catch (err) {
+      console.error('Error retrieving contact:', err);
+      res.redirect('/business-contacts');
+    }
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Update Contact route
+router.post('/update/:id', async (req, res) => {
+  const user = req.session.user;
+  if (user) {
+    try {
+      const id = req.params.id;
+      const { username, password, email, contact } = req.body;
+
+      // Create a new MongoClient
+      const client = new MongoClient(url, { useUnifiedTopology: true });
+
+      // Connect to the MongoDB server
+      await client.connect();
+
+      console.log('Connected to the database');
+
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
+
+      // Update the contact with the provided id
+      await collection.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: { username, password, email, contact } }
+      );
+
+      res.redirect('/business-contacts');
+
+      // Close the client connection
+      client.close();
+    } catch (err) {
+      console.error('Error updating contact:', err);
+      res.redirect('/business-contacts');
+    }
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Delete Contact route
+router.get('/delete/:id', async (req, res) => {
+  const user = req.session.user;
+  if (user) {
+    try {
+      const id = req.params.id;
+
+      // Create a new MongoClient
+      const client = new MongoClient(url, { useUnifiedTopology: true });
+
+      // Connect to the MongoDB server
+      await client.connect();
+
+      console.log('Connected to the database');
+
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
+
+      // Delete the contact with the provided id
+      await collection.deleteOne({ _id: new ObjectId(id) });
+
+      res.redirect('/business-contacts');
+
+      // Close the client connection
+      client.close();
+    } catch (err) {
+      console.error('Error deleting contact:', err);
+      res.redirect('/business-contacts');
     }
   } else {
     res.redirect('/login');

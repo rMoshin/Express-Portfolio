@@ -6,7 +6,7 @@
   </head>
   <body>
     <!-- Header Section -->
-    <% include('partials/header') %>
+    <%- include('partials/header') %>
 
     <main>
       <!-- Contacts Section -->
@@ -16,8 +16,8 @@
           <thead>
             <tr>
               <th>Contact Name</th>
-              <th>Contact Number</th>
               <th>Email Address</th>
+              <th>Contact Number</th>
               <th></th> <!-- Empty header for buttons -->
             </tr>
           </thead>
@@ -25,8 +25,8 @@
             <% contacts.forEach(contact => { %>
               <tr>
                 <td><%= contact.username %></td>
-                <td><%= contact.password %></td>
                 <td><%= contact.email %></td>
+                <td><%= contact.contact %></td>
                 <td>
                   <a href="/update/<%= contact._id %>" class="button">Update</a>
                   <a href="/delete/<%= contact._id %>" class="button">Delete</a>
@@ -39,6 +39,6 @@
     </main>
 
     <!-- Footer Section -->
-    <% include('partials/footer') %>
+    <%- include('partials/footer') %>
   </body>
 </html>

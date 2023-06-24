@@ -9,7 +9,11 @@
       <a href="/projects">Projects</a>
       <a href="/services">Services</a>
       <a href="/contact">Contact</a>
-      <a href="/login">Login</a>
+      <% if (user) { %>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+      <% } %>
       <a href="/business-contacts">Business Contacts</a>
     </div>
   </nav>
