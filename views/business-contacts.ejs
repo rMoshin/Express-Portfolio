@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Business Contacts</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <% include('partials/header') %>
+
+    <main>
+      <!-- Contacts Section -->
+      <section class="contacts">
+        <h2>Business Contacts</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Contact Name</th>
+              <th>Contact Number</th>
+              <th>Email Address</th>
+              <th></th> <!-- Empty header for buttons -->
+            </tr>
+          </thead>
+          <tbody>
+            <% contacts.forEach(contact => { %>
+              <tr>
+                <td><%= contact.username %></td>
+                <td><%= contact.password %></td>
+                <td><%= contact.email %></td>
+                <td>
+                  <a href="/update/<%= contact._id %>" class="button">Update</a>
+                  <a href="/delete/<%= contact._id %>" class="button">Delete</a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <% include('partials/footer') %>
+  </body>
+</html>

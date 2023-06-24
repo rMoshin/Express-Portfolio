@@ -288,3 +288,18 @@ footer {
     padding: 0.5rem 1rem;
   }
   
+  /*CSS code for business-contact view*/
+  /* Add this to your styles.css file */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table-button {
+  margin-right: 4px;
+}

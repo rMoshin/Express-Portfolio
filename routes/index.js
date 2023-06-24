@@ -7,10 +7,11 @@ Date: June 4, 2023
 
 const express = require('express');
 const router = express.Router();
-const users = [
-  { username: 'admin', password: 'admin123' },
-  { username: 'user', password: 'user123' }
-];
+const { MongoClient } = require('mongodb');
+
+const url = 'mongodb://localhost:27017';
+const dbName = 'portfolio';
+const collectionName = 'users';
 
 // Home Page route
 router.get('/', (req, res) => {
@@ -45,24 +46,59 @@ router.get('/login', (req, res) => {
 // Authentication route
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(user => user.username === username && user.password === password);
-  if (user) {
-    req.session.user = user;
-    res.redirect('/business-contacts');
-  } else {
-    res.redirect('/login');
-  }
+  MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
+    if (err) {
+      console.error('Error connecting to the database:', err);
+      res.redirect('/login');
+      return;
+    }
+
+    const db = client.db(dbName);
+    const usersCollection = db.collection(collectionName);
+
+    usersCollection.findOne({ username, password }, (err, user) => {
+      if (err) {
+        console.error('Error retrieving user:', err);
+        res.redirect('/login');
+      } else {
+        if (user) {
+          req.session.user = user;
+          res.redirect('/business-contacts');
+        } else {
+          res.redirect('/login');
+        }
+      }
+
+      client.close();
+    });
+  });
 });
 
 // Business Contacts List route
 router.get('/business-contacts', (req, res) => {
   const user = req.session.user;
   if (user) {
-    const contacts = [
-      { name: 'John Doe', contactNumber: '1234567890', email: 'john@example.com' },
-      { name: 'Jane Smith', contactNumber: '9876543210', email: 'jane@example.com' }
-    ];
-    res.render('business-contacts', { title: 'Business Contacts', contacts });
+    MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
+      if (err) {
+        console.error('Error connecting to the database:', err);
+        res.redirect('/');
+        return;
+      }
+
+      const db = client.db(dbName);
+      const usersCollection = db.collection(collectionName);
+
+      usersCollection.find().toArray((err, contacts) => {
+        if (err) {
+          console.error('Error retrieving contacts:', err);
+          res.redirect('/');
+        } else {
+          res.render('business-contacts', { title: 'Business Contacts', contacts });
+        }
+
+        client.close();
+      });
+    });
   } else {
     res.redirect('/login');
   }
